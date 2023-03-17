@@ -1,4 +1,4 @@
-package model;
+package io.github.redouane59.quizapp.model;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -17,16 +17,26 @@ public class Words {
   Set<Word> content = new HashSet<>();
 
   public List<Question> generateQuestions(int nbQuestions) {
+    return generateQuestions(nbQuestions, null);
+  }
+
+  public List<Question> generateQuestions(int nbQuestions, String type) {
     List<Question> questions = new ArrayList<>();
 
     for (int i = 0; i < nbQuestions; i++) {
-      Word      expectedWord = getRandomWord();
+      Word expectedWord;
+      if (type != null) {
+        expectedWord = getRandomWord(type);
+      } else {
+        expectedWord = getRandomWord();
+      }
       Set<Word> propositions = new HashSet<>();
       propositions.add(expectedWord);
 
       while (propositions.size() < 4) {
         Word randomWord = getRandomWord(expectedWord.getType());
-        if (!randomWord.equals(expectedWord)) {
+        if (!randomWord.getInput().equals(expectedWord.getInput())
+            && !randomWord.getOutput().equals(expectedWord.getInput())) {
           propositions.add(randomWord);
         }
       }
@@ -59,6 +69,9 @@ public class Words {
   }
 
   private Word getRandomWord() {
+    if (content.size() < 10) {
+      throw new IllegalArgumentException("not enough worsd");
+    }
     List<Word> contentList = new ArrayList<>(content);
     int        randomIndex = ThreadLocalRandom.current().nextInt(contentList.size());
     return contentList.get(randomIndex);

@@ -1,4 +1,4 @@
-package model;
+package io.github.redouane59.quizapp.model;
 
 import java.util.Set;
 import lombok.AllArgsConstructor;

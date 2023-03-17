@@ -1,3 +1,42 @@
+intput,output,type
+mon père,beba,person
+ma mère,Yema,person
+mon grand père,bebasidou / jedi,person
+ma grand mère,mane / djedet,person
+mon oncle paternel,3mi / 3mou,person
+mon oncle maternel,7ali / 7alou / khali,person
+ma tante paternelle,3amti,person
+ma tante paternelle,khalti,person
+mon cousin,wlid + 3mi/kahli/3mti/khalti,person
+ma cousine,Bent + 3mi/kahli/3mti/khalti,person
+mon frère,khouya,person
+ma soeur,khti,person
+mon fils,wliidi,person
+ma fille,benti,person
+ma femme,morti,person
+mon mari,radjli,person
+mon beau-frère,nsib / lousi,person
+ma belle-soeur,sitbi / lousta,person
+mon beau père,nsibi / sheikhi,person
+ma belle mère,nssibti,person
+garçon(s) / enfant,wled / drari,person
+fille (enfant),bent,person
+filles (enfant),bnet,person
+homme,radjel,person
+femme,mra / nsa,person
+parents,mwalin / walidin / maliya,person
+mes parents,waldiya,person
+la famille,el 3ayla,person
+garçon,tfal,person
+fille,tafla,person
+du monde,ghachi,person
+personne,7ata wahad,person
+ami,s7ab,person
+travailleur,kheddem,person
+ensemble,fi ra7ba / m3a ba3dana,person
+en famille,m3a dar,person
+population,cha3b,person
+propriétaire,moul,person
 ghawel,il a accéléré,verb
 yghawel,il accélère,verb
 chra,il a acheté,verb
@@ -52,13 +91,13 @@ ysa9ssi,il demande,verb
 ye7bet,il descend,verb
 r9edt,il a dormi,verb
 yer9od,il dort,verb
- kaan 3ndou,il a eu,verb
+kaan 3ndou,il a eu,verb
 chek,il a douté,verb
 ychek,il doute,verb
 kteb,il a écrit,verb
 yekteb,il écrit,verb
 dkhel,il est rentré,verb
-yedkhol ,il entre,verb
+yedkhol,il entre,verb
 b3ath,il a envoyé,verb
 yab3at,il envoie,verb
 djarreb,il a essayé,verb
@@ -258,48 +297,8 @@ s7i7,solide,adjective
 rachi,fragile,adjective
 mach7a7,radin,adjective
 krim,généreux,adjective
-7assel ,bloqué,adjective
+7assel,bloqué,adjective
 na3san,sommeil,adjective
 7ili,rusé,adjective
 m9atta3,déchiré,adjective
 mtabbez,abîmé,adjective
-Mon père,beba
-Ma mère,Yema
-mon grand père,bebasidou / jedi
-ma grand mère,mane / djedet
-mon oncle (paternel),3mi / 3mou
-mon oncle (maternel),7ali / 7alou / Khali
-ma tante,3mti / khalti
-Mon cousin,wlid + 3mi/kahli/3mti/khalti
-mes cousins (paternels différents oncle),wlad 3amoumi
-mes cousins (paternels même oncle),wlad 3ami
-mes cousins (paternels différentes tantes),ouled 3amati
-mes cousins (paternels même tante),ouled 3amti
-mes cousins (maternels différentes tantes),ouled khalati
-mes cousins (maternals même tante),ouled khalti
-mes cousins (maternels différents oncles),ouled khouali
-mes cousins (maternals même oncle),ouled khali
-ma cousine,Bent + ...
-mes cousines,bnet +
-mon frère,khouya (khou/khawa)
-ma (mes) sœur(s),khti / khwatati
-La soeur de,khout
-Le frère de,Khou
-mon fils,wliidi
-ma fille,benti
-ma femme,morti
-mon mari,radjli
-mon beau-frère,nsib / lousi
-ma belle-soeur,sitbi / lousta
-mon beau père,nsibi/sheikhi
-garçon(s) / enfant,wled / Wlad ou Drari
-fille(s) (enfant),bent / bnet
-fille (nom),tefla
-mon fils,wlidi
-homme,radjel (seyed) / rdjal
-femme,mra / nsa
-parents,mwalin / walidin / maliya
-mes parents,waldiya
-la famille,el 3ayla
-garçon,tfal
-fille,fatla

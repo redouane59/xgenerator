@@ -1,9 +1,11 @@
+package io.github.redouane59.quizapp;
+
 import static org.junit.Assert.assertEquals;
 
+import io.github.redouane59.quizapp.model.Question;
+import io.github.redouane59.quizapp.model.Word;
+import io.github.redouane59.quizapp.model.Words;
 import java.util.List;
-import model.Question;
-import model.Word;
-import model.Words;
 import org.junit.Test;
 
 public class WordsTest {
