@@ -1,7 +1,9 @@
 package io.github.redouane59.quizapp;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import io.github.redouane59.quizapp.model.Word;
 import io.github.redouane59.quizapp.model.Words;
@@ -39,7 +41,7 @@ public class WordsBuilderTest {
 
   @Test
   public void testBuildFromCSVContent() throws IOException {
-    String csvContent = "word,definition,type\n" +
+    String csvContent = "intput,output,type\n" +
                         "apple,a fruit,fruit\n" +
                         "banana,a fruit,fruit\n" +
                         "carrot,a vegetable,vegetable\n";
@@ -48,6 +50,32 @@ public class WordsBuilderTest {
     assertNotNull(words.getContent());
     assertEquals(3, words.getContent().size());
 
+  }
+
+  @Test
+  public void testBuildFromCSV() throws IOException {
+    String csvContent = "input,output,type\n" +
+                        "Hello,Bonjour,Greeting\n" +
+                        "Goodbye,Au revoir,Greeting\n" +
+                        "Yes,Oui,Confirmation\n" +
+                        "No,Non,Confirmation\n";
+
+    Set<Word> words = WordsBuilder.buildFromCSV(csvContent).getContent();
+
+    assertFalse(words.contains(new Word("input", "output", "type")));
+    assertTrue(words.contains(new Word("Hello", "Bonjour", "Greeting")));
+
+  }
+
+  @Test
+  public void testBuildFromCSVFile() throws IOException {
+    String filePath = "src/test/resources/test_words.csv";
+    Words  words    = WordsBuilder.build(filePath);
+
+    assertFalse(words.getContent().isEmpty());
+    assertFalse(words.getContent().contains(new Word("input", "output", "type")));
+    assertTrue(words.getContent().contains(new Word("Bonjour", "Hello", "Greeting")));
+    assertTrue(words.getContent().contains(new Word("Oui", "Yes", "Confirmation")));
   }
 
 

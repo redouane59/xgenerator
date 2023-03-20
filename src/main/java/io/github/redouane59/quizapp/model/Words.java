@@ -69,8 +69,8 @@ public class Words {
   }
 
   private Word getRandomWord() {
-    if (content.size() < 10) {
-      throw new IllegalArgumentException("not enough worsd");
+    if (content.size() < 5) {
+      throw new IllegalArgumentException("not enough words");
     }
     List<Word> contentList = new ArrayList<>(content);
     int        randomIndex = ThreadLocalRandom.current().nextInt(contentList.size());

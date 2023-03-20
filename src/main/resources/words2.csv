@@ -1,0 +1,304 @@
+input,output,type
+beba,mon père,person
+Yema,ma mère,person
+bebasidou / jedi,mon grand père,person
+mane / djedet,ma grand mère,person
+3mi / 3mou,mon oncle paternel,person
+7ali / 7alou / khali,mon oncle maternel,person
+3amti,ma tante paternelle,person
+khalti,ma tante paternelle,person
+wlid + 3mi/kahli/3mti/khalti,mon cousin,person
+Bent + 3mi/kahli/3mti/khalti,ma cousine,person
+khouya,mon frère,person
+khti,ma soeur,person
+wliidi,mon fils,person
+benti,ma fille,person
+morti,ma femme,person
+radjli,mon mari,person
+nsib / lousi,mon beau-frère,person
+sitbi / lousta,ma belle-soeur,person
+nsibi / sheikhi,mon beau père,person
+nssibti,ma belle mère,person
+wled / drari,garçon(s) / enfant,person
+bent,fille (enfant),person
+bnet,filles (enfant),person
+radjel,homme,person
+mra / nsa,femme,person
+mwalin / walidin / maliya,parents,person
+waldiya,mes parents,person
+el 3ayla,la famille,person
+tfal,garçon,person
+tafla,fille,person
+ghachi,du monde,person
+7ata wahad,personne,person
+s7ab,ami,person
+kheddem,travailleur,person
+fi ra7ba / m3a ba3dana,ensemble,person
+m3a dar,en famille,person
+cha3b,population,person
+moul,propriétaire,person
+il a accéléré,ghawel,verb
+il accélère,yghawel,verb
+il a acheté,chra,verb
+il achète,yechri,verb
+il a aidé,3awen,verb
+il aide,y3awen,verb
+il aimait,7eb,verb
+il aime,y7eb,verb
+il est allé,ra7,verb
+il va,yro7,verb
+il a appelé,3ayet,verb
+il appelle,y3ayet,verb
+il a apporté,djab,verb
+il apporte,ydjib,verb
+il est arrivé,l7e9,verb
+il arrive,yel7e9,verb
+il a attendu,stena,verb
+il attend,yestena,verb
+il a,3ndou,verb
+il a bu,chrob,verb
+il boit,yechrob,verb
+il a changé,bedel,verb
+il change,tbedel,verb
+il a chanté,ghena,verb
+il chante,ygheni,verb
+il a cherché,7awess,verb
+il cherche,i7awess,verb
+il sera,ykoun,verb
+il était,kaan,verb
+il est,rahou,verb
+il a commencé,bda,verb
+il commence,yebda,verb
+il est venu,dja,verb
+il vient,ydji,verb
+il a compris,fham,verb
+il comprend,fham,verb
+il a connu,3ref,verb
+il connaît,ya3raf,verb
+il a crié,3ayet,verb
+il crie,y3ayet,verb
+il a cuisiné,tayeb,verb
+il cuisine,itayeb,verb
+il a dit,9al,verb
+il dit,y9ol,verb
+il a dansé,chte7,verb
+il danse,yechta7,verb
+il a dechiré,9ete3,verb
+il dechire,y9ete3,verb
+il a demandé,se9sat,verb
+il demande,ysa9ssi,verb
+il est descendu,7bet,verb
+il descend,ye7bet,verb
+il a dormi,r9edt,verb
+il dort,yer9od,verb
+il a eu,kaan 3ndou,verb
+il a douté,chek,verb
+il doute,ychek,verb
+il a écrit,kteb,verb
+il écrit,yekteb,verb
+il est rentré,dkhel,verb
+il entre,yedkhol,verb
+il a envoyé,b3ath,verb
+il envoie,yab3at,verb
+il a essayé,djarreb,verb
+il essaye,ydjarreb,verb
+il a essayé,siya,verb
+il essaye,ysiyi,verb
+il a expliqué,fahem,verb
+il explique,yfahem,verb
+il a fait,dar,verb
+il fait,idir,verb
+il a fermé,ghle9,verb
+il ferme,yeghle9,verb
+il a fini,kemel,verb
+il finit,ikemel,verb
+il a habité,sken,verb
+il habite,yeskon,verb
+il a laissé,khalla,verb
+il laisse,ykhali,verb
+il a lu,9ra,verb
+il lit,ye9ra,verb
+il a mangé,kla,verb
+il mange,yakoul,verb
+il a marché,mcha,verb
+il marche,yemchi,verb
+il est monté,tla3,verb
+il monte,yetla3,verb
+il a montré,wera,verb
+il montre,iweri,verb
+il a ouvert,fte7,verb
+il ouvre,yefte7,verb
+il a ouvert,7el,verb
+il ouvre,y7el,verb
+il a parlé,hdar,verb
+il parle,yahdar,verb
+il a partagé,9ssem,verb
+il partage,ye9ssem,verb
+il a payé,khalass,verb
+il paye,ikhalass,verb
+il a pensé,khamem,verb
+il pense,ikhamem,verb
+il a plu,3djeb,verb
+il plaît,ya3djeb,verb
+il a posé,7et,verb
+il pose,y7et,verb
+il a pu,9der,verb
+il peut,ye9der,verb
+il a pris,da,verb
+il prend,yedi,verb
+il a pris en photo,ssewer,verb
+il prend en photo,isewer,verb
+il a préparé,wajad,verb
+il prépare,iwajad,verb
+il a réfléchi,khamem,verb
+il réfléchit,ykhamem,verb
+il est resté,93ed,verb
+il reste,ye93od,verb
+il a ri,d7ak,verb
+il rit,yed7ak,verb
+il s'est assis,93ed,verb
+il s'assoie,ye93od,verb
+il s'est énervé,t9ele9,verb
+il s'énerve,yet9ele9,verb
+il s'est habillé,lbess,verb
+il s'habille,yelbess,verb
+il a su,3ref,verb
+il sait,ya3raf,verb
+il sait,3labalou,verb
+il s'est battu,dharab,verb
+il se bat,yadharab,verb
+il a serré,ziyer,verb
+il serre,iziyer,verb
+il a soigné,dawa,verb
+il soigne,ydawi,verb
+il est sorti,khrej,verb
+il sort,yokhrej,verb
+il a tenu,ched,verb
+il tient,iched,verb
+il a terminé,kemel,verb
+il termine,ikemel,verb
+il est tombé,ta7,verb
+il tombe,iti7,verb
+il a tordu,3awedj,verb
+il tord,y3awedj,verb
+il a trouvé,sab,verb
+il trouve,yssib,verb
+il a vendu,baa3,verb
+il vend,ybi3,verb
+il a volé,sre9,verb
+il vole,yessre9,verb
+il a voulu,7ab,verb
+il veut,7ab,verb
+il oublie,yensa,verb
+il a oublié,ensa,verb
+il se trompe,yeghlet,verb
+il s'est trompé,ghlete,verb
+il a faim,dja3e,verb
+il a soif,3teche,verb
+il a mal,3endou star,verb
+il revient,iwelli,verb
+il est revenu,wella,verb
+il voit,ichouff,verb
+il a vu,cheff,verb
+il arrête,yahbass,verb
+il a arrêté,Habss,verb
+il faut,lazem,verb
+il manque,khass,verb
+loin,b3id,adjective
+fatigué,3ayan,adjective
+léger,khfif,adjective
+neuf,jdid,adjective
+gros,smin,adjective
+bien,mli7,adjective
+ouvert,meftou7,adjective
+grand,kbir,adjective
+impatient,m9ala9,adjective
+petit,sghir,adjective
+malade,mrid,adjective
+lent,t9qil,adjective
+cher,ghali,adjective
+fermé,maghlou9,adjective
+gentil,3a9al,adjective
+difficile,wa3ar,adjective
+difficile,s3ib,adjective
+délicieux,bnin,adjective
+vide,faregh,adjective
+chaud,skhoun,adjective
+beau,chbeb,adjective
+prêt,wadjed,adjective
+proche,9rib,adjective
+froid,bared,adjective
+long,touil,adjective
+facile,sehel,adjective
+instruit,9ari,adjective
+debout,wa9af,adjective
+assis,9a3ad,adjective
+gratuit,batal,adjective
+méchant,9bih,adjective
+inquiet,m9ala9,adjective
+bon,mli7,adjective
+fou,mahboul,adjective
+heureux,far7an,adjective
+timide,7achman,adjective
+courageux,f7el,adjective
+propre,ndif,adjective
+propre,n9i,adjective
+dégourdi,chater,adjective
+moche,mez3ou9,adjective
+posé,rzin,adjective
+fort,9awi,adjective
+mauvais,9bih,adjective
+énervé,za3fan,adjective
+sale,mwesekh,adjective
+pauvre,zawali,adjective
+triste,maghboun,adjective
+épicé,7ar,adjective
+salé,mala7,adjective
+sucré,7lou,adjective
+allongé,mamdoud,adjective
+français,françaoui,adjective
+algérien,dziri,adjective
+européen,gawri,adjective
+marocain,marouki,adjective
+tunisien,tounsi,adjective
+egyptien,masri,adjective
+arabe,3arbi,adjective
+musulman,mouslim,adjective
+chrétien,massihi,adjective
+juif,yhoudi,adjective
+noir,ka7louche,adjective
+affamé,mayet jou3,adjective
+assoifé,mayet 3tach,adjective
+rassasié,chab3an,adjective
+faim,dji3an,adjective
+soif,3atchane,adjective
+curieux,9ar3aj,adjective
+plein,m3abi,adjective
+pressé,mezroub,adjective
+absent,ghayeb,adjective
+présent,7adar,adjective
+occupé,lati,adjective
+peur,khayef,adjective
+endormi,ra9ad,adjective
+éveillé,nayed,adjective
+enthousiaste,hayel,adjective
+perdu,mbaher,adjective
+brûlé,ma7ro9,adjective
+cassé,mkasar,adjective
+défaillant,mkhaser,adjective
+fâché,mgachech,adjective
+riche,ghani,adjective
+jaloux,ghayour,adjective
+mouillé,mchamakh,adjective
+sec,nachef,adjective
+naïf,niya,adjective
+pourri,fassed,adjective
+solide,s7i7,adjective
+fragile,rachi,adjective
+radin,mach7a7,adjective
+généreux,krim,adjective
+bloqué,7assel,adjective
+sommeil,na3san,adjective
+rusé,7ili,adjective
+déchiré,m9atta3,adjective
+abîmé,mtabbez,adjective

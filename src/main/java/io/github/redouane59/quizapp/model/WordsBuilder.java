@@ -38,7 +38,9 @@ public class WordsBuilder {
     StringReader stringReader = new StringReader(csvContent);
     CSVReader    csvReader    = new CSVReader(stringReader);
     Set<Word>    words        = new HashSet<>();
-    String[]     nextRecord;
+
+    String[] nextRecord;
+    csvReader.readNext(); // ignore header
     while ((nextRecord = csvReader.readNext()) != null) {
       String word       = nextRecord[0];
       String definition = nextRecord[1];
@@ -48,7 +50,9 @@ public class WordsBuilder {
       }
       words.add(new Word(word, definition, type));
     }
+
     return new Words(words);
   }
+
 
 }

@@ -1,4 +1,5 @@
 C:\Users\Perso\Documents\GitHub\xgenerator\src\main\java\io\github\redouane59\quizapp\model\Question.java
+C:\Users\Perso\Documents\GitHub\xgenerator\src\main\java\io\github\redouane59\quizapp\model\QuestionResponse.java
 C:\Users\Perso\Documents\GitHub\xgenerator\src\main\java\io\github\redouane59\quizapp\model\quizz\IQuizApp.java
 C:\Users\Perso\Documents\GitHub\xgenerator\src\main\java\io\github\redouane59\quizapp\Main.java
 C:\Users\Perso\Documents\GitHub\xgenerator\src\main\java\io\github\redouane59\quizapp\model\Word.java
@@ -6,4 +7,4 @@ C:\Users\Perso\Documents\GitHub\xgenerator\src\main\java\io\github\redouane59\qu
 C:\Users\Perso\Documents\GitHub\xgenerator\src\main\java\io\github\redouane59\quizapp\model\quizz\AbstractQuizzApp.java
 C:\Users\Perso\Documents\GitHub\xgenerator\src\main\java\io\github\redouane59\quizapp\model\Words.java
 C:\Users\Perso\Documents\GitHub\xgenerator\src\main\java\io\github\redouane59\quizapp\model\quizz\views\QuizAppConsoleView.java
-C:\Users\Perso\Documents\GitHub\xgenerator\src\main\java\io\github\redouane59\quizapp\model\functions\GenerateQuestionsFunction.java
+C:\Users\Perso\Documents\GitHub\xgenerator\src\main\java\io\github\redouane59\quizapp\functions\GenerateQuestionsFunction.java
