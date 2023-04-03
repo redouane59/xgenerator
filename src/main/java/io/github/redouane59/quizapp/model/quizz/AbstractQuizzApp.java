@@ -1,5 +1,6 @@
 package io.github.redouane59.quizapp.model.quizz;
 
+import io.github.redouane59.quizapp.functions.ApiException;
 import io.github.redouane59.quizapp.model.Question;
 import io.github.redouane59.quizapp.model.Word;
 import io.github.redouane59.quizapp.model.Words;
@@ -31,7 +32,7 @@ public abstract class AbstractQuizzApp implements IQuizApp {
    *
    * @param nbQuestions number of questions to be displayed
    */
-  public void start(int nbQuestions) {
+  public void start(int nbQuestions) throws ApiException {
     int score         = 0;
     int i             = 0;
     int questionCount = 0;
@@ -85,12 +86,12 @@ public abstract class AbstractQuizzApp implements IQuizApp {
   }
 
 
-  public List<Question> generateQuestions(int nbQuestions) {
+  public List<Question> generateQuestions(int nbQuestions) throws ApiException {
     Words words = WordsBuilder.build("src/main/resources/words.csv");
     return words.generateQuestions(nbQuestions);
   }
 
-  public List<Question> generateQuestions(int nbQuestions, String type) {
+  public List<Question> generateQuestions(int nbQuestions, String type) throws ApiException {
     Words words = WordsBuilder.build("src/main/resources/words.csv");
 
     return words.generateQuestions(nbQuestions, type);

@@ -74,8 +74,15 @@
           <functionTarget>io.github.redouane59.quizapp.functions.GenerateQuestionsFunction
           </functionTarget>
         </configuration>
+        <executions>
+          <execution>
+            <id>make-assembly</id>
+            <phase>package</phase>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
+
   </build>
 
   <properties>

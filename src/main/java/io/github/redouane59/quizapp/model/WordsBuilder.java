@@ -1,6 +1,8 @@
 package io.github.redouane59.quizapp.model;
 
+import com.opencsv.CSVParserBuilder;
 import com.opencsv.CSVReader;
+import com.opencsv.CSVReaderBuilder;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.StringReader;
@@ -34,21 +36,28 @@ public class WordsBuilder {
     return words;
   }
 
-  public static Words buildFromCSV(String csvContent) throws IOException {
-    StringReader stringReader = new StringReader(csvContent);
-    CSVReader    csvReader    = new CSVReader(stringReader);
-    Set<Word>    words        = new HashSet<>();
+  public static Words buildFromCSV(String csvContent, char delimiter) throws IOException {
+    StringReader     stringReader     = new StringReader(csvContent);
+    CSVParserBuilder csvParserBuilder = new CSVParserBuilder().withSeparator(delimiter);
+    CSVReaderBuilder csvReaderBuilder = new CSVReaderBuilder(stringReader).withCSVParser(csvParserBuilder.build());
+    CSVReader        csvReader        = csvReaderBuilder.build();
+    Set<Word>        words            = new HashSet<>();
 
     String[] nextRecord;
     csvReader.readNext(); // ignore header
     while ((nextRecord = csvReader.readNext()) != null) {
-      String word       = nextRecord[0];
-      String definition = nextRecord[1];
-      String type       = null;
-      if (nextRecord.length > 2) {
-        type = nextRecord[2];
+      if (nextRecord.length > 1) {
+        String word       = nextRecord[0];
+        String definition = nextRecord[1];
+
+        String type = null;
+        if (nextRecord.length > 2) {
+          type = nextRecord[2];
+        }
+        words.add(new Word(word, definition, type));
+      } else {
+        System.err.println(nextRecord.length + " word only");
       }
-      words.add(new Word(word, definition, type));
     }
 
     return new Words(words);

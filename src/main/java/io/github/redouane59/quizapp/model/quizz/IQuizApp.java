@@ -1,5 +1,6 @@
 package io.github.redouane59.quizapp.model.quizz;
 
+import io.github.redouane59.quizapp.functions.ApiException;
 import io.github.redouane59.quizapp.model.Question;
 import io.github.redouane59.quizapp.model.Word;
 import java.util.Set;
@@ -11,8 +12,8 @@ public interface IQuizApp {
    *
    * @param nbQuestions number of questions to be displayed
    */
-  void start(int nbQuestions);
-  
+  void start(int nbQuestions) throws ApiException;
+
 
   /**
    * Display the question

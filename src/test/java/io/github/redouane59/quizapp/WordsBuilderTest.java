@@ -41,15 +41,14 @@ public class WordsBuilderTest {
 
   @Test
   public void testBuildFromCSVContent() throws IOException {
-    String csvContent = "intput,output,type\n" +
-                        "apple,a fruit,fruit\n" +
-                        "banana,a fruit,fruit\n" +
-                        "carrot,a vegetable,vegetable\n";
+    String csvContent = "intput;output;type\n" +
+                        "apple;a fruit;fruit\n" +
+                        "banana;a fruit;fruit\n" +
+                        "carrot;a vegetable;vegetable\n";
 
-    Words words = WordsBuilder.buildFromCSV(csvContent);
+    Words words = WordsBuilder.buildFromCSV(csvContent, ';');
     assertNotNull(words.getContent());
     assertEquals(3, words.getContent().size());
-
   }
 
   @Test
@@ -60,7 +59,7 @@ public class WordsBuilderTest {
                         "Yes,Oui,Confirmation\n" +
                         "No,Non,Confirmation\n";
 
-    Set<Word> words = WordsBuilder.buildFromCSV(csvContent).getContent();
+    Set<Word> words = WordsBuilder.buildFromCSV(csvContent, ',').getContent();
 
     assertFalse(words.contains(new Word("input", "output", "type")));
     assertTrue(words.contains(new Word("Hello", "Bonjour", "Greeting")));
