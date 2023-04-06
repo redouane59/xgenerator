@@ -46,7 +46,7 @@ public class WordsBuilder {
     String[] nextRecord;
     csvReader.readNext(); // ignore header
     while ((nextRecord = csvReader.readNext()) != null) {
-      if (nextRecord.length > 1) {
+      if (nextRecord.length > 1 && !nextRecord[0].isBlank() && !nextRecord[1].isBlank()) {
         String word       = nextRecord[0];
         String definition = nextRecord[1];
 
@@ -56,7 +56,7 @@ public class WordsBuilder {
         }
         words.add(new Word(word, definition, type));
       } else {
-        System.err.println(nextRecord.length + " word only");
+        System.err.println(nextRecord.length + "\nword only : " + csvContent);
       }
     }
 

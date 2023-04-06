@@ -39,7 +39,7 @@ public class GenerateQuestionsFunction implements HttpFunction {
       // Generate the questions from the CSV content
       Words words = WordsBuilder.buildFromCSV(csvContent, delimiter);
       if (words.getContent().isEmpty()) {
-        throw new ApiException("No words found from the submited content. Check the delimiter.", 400);
+        throw new ApiException("The content could not be parsed as CSV. Check the delimiter.", 400);
       }
       String questionCountValue = request.getFirstQueryParameter("question_count").orElse("0");
       int    questionCount      = 0;
@@ -62,48 +62,50 @@ public class GenerateQuestionsFunction implements HttpFunction {
   }
 
 
+  private String extractCsvContent(BufferedReader reader, String boundary) throws IOException {
+    StringBuilder csvContent        = new StringBuilder();
+    String        line;
+    boolean       csvContentStarted = false;
+
+    while ((line = reader.readLine()) != null) {
+      if (line.startsWith("--" + boundary)) {
+        csvContentStarted = !csvContentStarted;
+        continue;
+      }
+      if (csvContentStarted) {
+        if (line.startsWith("Content-Disposition:") || line.startsWith("Content-Type:")) {
+          continue;
+        }
+        if (line.startsWith("--")) {
+          break;
+        }
+        if (!line.equals("")) {
+          csvContent.append(line).append(System.lineSeparator());
+        }
+      }
+    }
+
+    return csvContent.toString();
+  }
+
   private String getRequestBody(HttpRequest request) throws IOException, ApiException {
     String contentType = request.getFirstHeader("Content-Type").orElse("");
     if (!contentType.startsWith("multipart/form-data")) {
-      throw new ApiException("Invalid content type", 400);
+      throw new ApiException("Invalid content type " + contentType, 400);
     }
 
     String boundary = getBoundary(contentType);
 
     try (BufferedReader reader = new BufferedReader(new InputStreamReader(request.getInputStream()))) {
-      StringBuilder requestBody       = new StringBuilder();
-      String        line;
-      boolean       csvContentStarted = false;
+      String csvContent = extractCsvContent(reader, boundary);
 
-      while ((line = reader.readLine()) != null) {
-        if (line.startsWith("--" + boundary)) {
-          csvContentStarted = true;
-          continue;
-        }
-        if (line.startsWith("Content-Disposition:")) {
-          continue;
-        }
-        if (line.startsWith("Content-Type:")) {
-          continue;
-        }
-        if (csvContentStarted) {
-          if (line.startsWith("--")) {
-            break;
-          }
-          if (!line.equals("")) {
-            requestBody.append(line).append(System.lineSeparator());
-          }
-        }
-      }
-
-      if (requestBody.length() == 0) {
+      if (csvContent.isEmpty()) {
         throw new ApiException("Empty file", 400);
       }
 
-      return requestBody.toString();
+      return csvContent;
     }
   }
-
 
   private String getBoundary(String contentType) {
     String[] parts = contentType.split(";");

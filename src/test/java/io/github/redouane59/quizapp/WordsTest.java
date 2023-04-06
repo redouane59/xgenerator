@@ -2,6 +2,7 @@ package io.github.redouane59.quizapp;
 
 import static org.junit.Assert.assertEquals;
 
+import io.github.redouane59.quizapp.functions.ApiException;
 import io.github.redouane59.quizapp.model.Question;
 import io.github.redouane59.quizapp.model.Word;
 import io.github.redouane59.quizapp.model.Words;
@@ -11,7 +12,7 @@ import org.junit.Test;
 public class WordsTest {
 
   @Test
-  public void testGenerateQuestions() {
+  public void testGenerateQuestions() throws ApiException {
     Words words = new Words();
     words.addWord(new Word("hello", "bonjour", "noun"));
     words.addWord(new Word("world", "monde", "noun"));

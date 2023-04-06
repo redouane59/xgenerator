@@ -29,16 +29,23 @@ public class Words {
 
     for (int i = 0; i < nbQuestions; i++) {
       Word expectedWord;
+      long nbPossiblePropositions = this.content.size();
       if (type != null) {
-        expectedWord = getRandomWord(type);
+        expectedWord           = getRandomWord(type);
+        nbPossiblePropositions = this.content.stream().filter(p -> p.getType().equals(expectedWord.getType())).count();
       } else {
         expectedWord = getRandomWord();
       }
       Set<Word> propositions = new HashSet<>();
       propositions.add(expectedWord);
-
-      while (propositions.size() < 4) {
-        Word randomWord = getRandomWord(expectedWord.getType());
+      int nbPropositions = 4;
+      while (propositions.size() < nbPropositions) {
+        Word randomWord;
+        if (nbPossiblePropositions > nbPropositions) {
+          randomWord = getRandomWord(expectedWord.getType());
+        } else {
+          randomWord = getRandomWord();
+        }
         if (!randomWord.getInput().equals(expectedWord.getInput())
             && !randomWord.getOutput().equals(expectedWord.getInput())) {
           propositions.add(randomWord);
