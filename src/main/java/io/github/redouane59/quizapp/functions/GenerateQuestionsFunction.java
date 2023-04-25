@@ -13,13 +13,18 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.List;
 import java.util.logging.Logger;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class GenerateQuestionsFunction implements HttpFunction {
 
   private static final Logger logger = Logger.getLogger(GenerateQuestionsFunction.class.getName());
 
   // gcloud functions deploy generate-question-function --entry-point io.github.redouane59.quizapp.functions.GenerateQuestionsFunction --runtime java17 --trigger-http --memory 256MB --timeout=30 --allow-unauthenticated --project=dz-dialect-api
+  // npm run build
+  // firebase deploy --only hosting:train-mee
   public void service(HttpRequest request, HttpResponse response) throws IOException {
+    LOGGER.debug("Entering in the Function");
     response.appendHeader("Access-Control-Allow-Origin", "*");
     response.appendHeader("Access-Control-Allow-Methods", "GET,POST,OPTIONS");
     response.appendHeader("Access-Control-Allow-Headers", "Content-Type");
@@ -32,6 +37,7 @@ public class GenerateQuestionsFunction implements HttpFunction {
     }
 
     try {
+      LOGGER.debug("starting process...");
       // Parse the CSV content from the request body
       String csvContent     = getRequestBody(request);
       String delimiterValue = request.getFirstQueryParameter("delimiter").orElse(",");
@@ -39,15 +45,21 @@ public class GenerateQuestionsFunction implements HttpFunction {
       // Generate the questions from the CSV content
       Words words = WordsBuilder.buildFromCSV(csvContent, delimiter);
       if (words.getContent().isEmpty()) {
+        LOGGER.error("The content could not be parsed as CSV. Check the delimiter.");
         throw new ApiException("The content could not be parsed as CSV. Check the delimiter.", 400);
       }
-      String questionCountValue = request.getFirstQueryParameter("question_count").orElse("0");
-      int    questionCount      = 0;
+      // questionCount
+      String questionCountValue = request.getFirstQueryParameter("question_count").orElse("5");
+      int    questionCount      = 5;
       if (questionCountValue.matches("-?\\d+")) {
         questionCount = Integer.parseInt(questionCountValue);
+      } else {
+        LOGGER.error("questionCount incorrect format : " + questionCountValue);
       }
-      List<Question> questions = words.generateQuestions(questionCount);
-
+      // type
+      String type = request.getFirstQueryParameter("type").orElse(null);
+      LOGGER.debug("questionCount=" + questionCount + "&type=" + type);
+      List<Question> questions = words.generateQuestions(questionCount, type);
       // Write the questions to the response body as JSON
       ObjectMapper mapper = new ObjectMapper();
       String       json   = mapper.writeValueAsString(new QuestionResponse(questions));
@@ -60,7 +72,6 @@ public class GenerateQuestionsFunction implements HttpFunction {
       response.getWriter().write("{\"error\": \"" + e.getMessage() + "\"}");
     }
   }
-
 
   private String extractCsvContent(BufferedReader reader, String boundary) throws IOException {
     StringBuilder csvContent        = new StringBuilder();
@@ -91,6 +102,7 @@ public class GenerateQuestionsFunction implements HttpFunction {
   private String getRequestBody(HttpRequest request) throws IOException, ApiException {
     String contentType = request.getFirstHeader("Content-Type").orElse("");
     if (!contentType.startsWith("multipart/form-data")) {
+      LOGGER.error("Invalid content type " + contentType);
       throw new ApiException("Invalid content type " + contentType, 400);
     }
 
@@ -100,9 +112,11 @@ public class GenerateQuestionsFunction implements HttpFunction {
       String csvContent = extractCsvContent(reader, boundary);
 
       if (csvContent.isEmpty()) {
+        LOGGER.error("empty file" + contentType);
         throw new ApiException("Empty file", 400);
       }
 
+      LOGGER.debug("CSVContent : " + csvContent);
       return csvContent;
     }
   }

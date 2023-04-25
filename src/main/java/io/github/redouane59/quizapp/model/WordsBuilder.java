@@ -9,7 +9,9 @@ import java.io.StringReader;
 import java.util.HashSet;
 import java.util.Set;
 import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class WordsBuilder {
 
   @SneakyThrows
@@ -37,6 +39,7 @@ public class WordsBuilder {
   }
 
   public static Words buildFromCSV(String csvContent, char delimiter) throws IOException {
+    LOGGER.debug("csvContent : " + csvContent);
     StringReader     stringReader     = new StringReader(csvContent);
     CSVParserBuilder csvParserBuilder = new CSVParserBuilder().withSeparator(delimiter);
     CSVReaderBuilder csvReaderBuilder = new CSVReaderBuilder(stringReader).withCSVParser(csvParserBuilder.build());
@@ -60,6 +63,7 @@ public class WordsBuilder {
       }
     }
 
+    LOGGER.debug(words.size() + " words found");
     return new Words(words);
   }
 

@@ -9,10 +9,12 @@ import java.util.concurrent.ThreadLocalRandom;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Slf4j
 public class Words {
 
   Set<Word> content = new HashSet<>();
@@ -31,10 +33,12 @@ public class Words {
       Word expectedWord;
       long nbPossiblePropositions = this.content.size();
       if (type != null) {
-        expectedWord           = getRandomWord(type);
-        nbPossiblePropositions = this.content.stream().filter(p -> p.getType().equals(expectedWord.getType())).count();
+        expectedWord = getRandomWord(type);
       } else {
         expectedWord = getRandomWord();
+      }
+      if (expectedWord.getType() != null) {
+        nbPossiblePropositions = this.content.stream().filter(p -> p.getType().equals(expectedWord.getType())).count();
       }
       Set<Word> propositions = new HashSet<>();
       propositions.add(expectedWord);
@@ -85,6 +89,7 @@ public class Words {
 
 
   public void addWord(final Word word) {
+    LOGGER.debug("adding word " + word.getInput());
     this.content.add(word);
   }
 
@@ -103,6 +108,7 @@ public class Words {
 
   private Word getRandomWord() throws ApiException {
     if (content.size() < 5) {
+      LOGGER.error("Not able to get a random word cause content.size()=" + content.size());
       throw new ApiException("Not enough words. Min = 5 words", 400);
     }
     List<Word> contentList = new ArrayList<>(content);
