@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.Collectors;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,6 +28,10 @@ public class Words {
   }
 
   public List<Question> generateQuestions(int nbQuestions, String type) throws ApiException {
+    if (nbQuestions <= 0) {
+      return generateAllQuestions(type);
+    }
+
     List<Question> questions      = new ArrayList<>();
     Set<Word>      remainingWords = new HashSet<>(content); // to avoid duplicate in random selection
 
@@ -71,13 +76,20 @@ public class Words {
   }
 
   public List<Question> generateAllQuestions() throws ApiException {
-    List<Question> questions = new ArrayList<>();
+    return generateAllQuestions(null);
+  }
 
-    for (Word expectedWord : content) {
+  public List<Question> generateAllQuestions(String type) throws ApiException {
+    List<Question> questions       = new ArrayList<>();
+    Set<Word>      matchingContent = new HashSet<>(content);
+    if (type != null) {
+      matchingContent = content.stream().filter(w -> type.equals(w.getType())).collect(Collectors.toSet());
+    }
+    for (Word expectedWord : matchingContent) {
       Set<Word> propositions = new HashSet<>();
       propositions.add(expectedWord);
       while (propositions.size() < 4) {
-        Word randomWord = getRandomWord(content, expectedWord.getType());
+        Word randomWord = getRandomWord(matchingContent, expectedWord.getType());
         if (!randomWord.getInput().equals(expectedWord.getInput())
             && !randomWord.getOutput().equals(expectedWord.getInput())) {
           propositions.add(randomWord);
