@@ -27,16 +27,21 @@ public class Words {
   }
 
   public List<Question> generateQuestions(int nbQuestions, String type) throws ApiException {
-    List<Question> questions = new ArrayList<>();
+    List<Question> questions      = new ArrayList<>();
+    Set<Word>      remainingWords = new HashSet<>(content); // to avoid duplicate in random selection
 
     for (int i = 0; i < nbQuestions; i++) {
       Word expectedWord;
+      if (remainingWords.isEmpty()) {
+        remainingWords = new HashSet<>(content);
+      }
       long nbPossiblePropositions = this.content.size();
       if (type != null) {
-        expectedWord = getRandomWord(type);
+        expectedWord = getRandomWord(remainingWords, type);
       } else {
-        expectedWord = getRandomWord();
+        expectedWord = getRandomWord(remainingWords);
       }
+      remainingWords.remove(expectedWord);
       if (expectedWord.getType() != null) {
         nbPossiblePropositions = this.content.stream().filter(p -> p.getType().equals(expectedWord.getType())).count();
       }
@@ -46,9 +51,9 @@ public class Words {
       while (propositions.size() < nbPropositions) {
         Word randomWord;
         if (nbPossiblePropositions > nbPropositions) {
-          randomWord = getRandomWord(expectedWord.getType());
+          randomWord = getRandomWord(content, expectedWord.getType());
         } else {
-          randomWord = getRandomWord();
+          randomWord = getRandomWord(content);
         }
         if (!randomWord.getInput().equals(expectedWord.getInput())
             && !randomWord.getOutput().equals(expectedWord.getInput())) {
@@ -72,7 +77,7 @@ public class Words {
       Set<Word> propositions = new HashSet<>();
       propositions.add(expectedWord);
       while (propositions.size() < 4) {
-        Word randomWord = getRandomWord(expectedWord.getType());
+        Word randomWord = getRandomWord(content, expectedWord.getType());
         if (!randomWord.getInput().equals(expectedWord.getInput())
             && !randomWord.getOutput().equals(expectedWord.getInput())) {
           propositions.add(randomWord);
@@ -94,24 +99,24 @@ public class Words {
   }
 
   // @todo check if enough result
-  private Word getRandomWord(String type) throws ApiException {
-    List<Word> contentList = new ArrayList<>(content);
+  private Word getRandomWord(Set<Word> words, String type) throws ApiException {
+    List<Word> contentList = new ArrayList<>(words);
     List<Word> matches = contentList.stream()
                                     .filter(w -> w.getType() != null)
                                     .filter(w -> w.getType().equals(type)).toList();
     if (matches.size() < 4) {
-      return getRandomWord();
+      return getRandomWord(content);
     }
     int randomIndex = ThreadLocalRandom.current().nextInt(matches.size());
     return matches.get(randomIndex);
   }
 
-  private Word getRandomWord() throws ApiException {
-    if (content.size() < 5) {
-      LOGGER.error("Not able to get a random word cause content.size()=" + content.size());
-      throw new ApiException("Not enough words. Min = 5 words", 400);
+  private Word getRandomWord(Set<Word> words) throws ApiException {
+    if (words.isEmpty()) {
+      LOGGER.error("Not able to get a random word because no more available word");
+      throw new ApiException("No more available words", 400);
     }
-    List<Word> contentList = new ArrayList<>(content);
+    List<Word> contentList = new ArrayList<>(words);
     int        randomIndex = ThreadLocalRandom.current().nextInt(contentList.size());
     return contentList.get(randomIndex);
   }
